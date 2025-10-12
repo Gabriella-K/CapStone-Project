@@ -1,0 +1,50 @@
+.popular-list {
+    padding: 20px;
+    color: white;
+}
+
+.popular-list h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #ff5c8d;
+}
+
+.song-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.song-card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.song-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff5c8d;
+}
+
+.song-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.song-info {
+    padding: 10px;
+}
+
+.song-title {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.artist {
+    color: #ccc;
+    font-size: 0.9rem;
+}
