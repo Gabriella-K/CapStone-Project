@@ -3,8 +3,9 @@ import Sidebar from "./components/Sidebar";
 import SearchBar from "./components/SearchBar";
 import TrendingSlider from "./components/TrendingSlider";
 import PopularList from "./components/PopularList";
-import { PlayerProvider } from "./context/PlayerContext";
+import PlayerControls from "./components/PlayerControls";
 import "./App.css";
+import { PlayerProvider } from "./context/PlayerContext";
 
 function App() {
   return (
@@ -15,12 +16,14 @@ function App() {
         <header className="header">
           <SearchBar />
         </header>
-        <div className="content">
-          <h2 className="section-title">Trending</h2>
-          <TrendingSlider />
-          <PopularList />
-          <PlayerProvider />
-        </div>
+        <PlayerProvider>
+          <div className="content">
+            <h2 className="section-title">Trending</h2>
+            <TrendingSlider />
+            <PopularList />
+            <PlayerControls />
+          </div>
+        </PlayerProvider>
       </div>
     </div>
   );
