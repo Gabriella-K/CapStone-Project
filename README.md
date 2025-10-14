@@ -1,7 +1,7 @@
 # Music Player App
 
 ## Project Overview
-The Music Player App is a web application built with **React** and **TailwindcSS** that allows users to play songs, manage playlists, and control music playback 
+The Music Player App is a web application built with **React** and **Vanilla CSS** that allows users to play songs, manage playlists, and control music playback 
 through a simple and intuitive interface.
 
 ## Project Structure
