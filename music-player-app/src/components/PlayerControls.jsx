@@ -40,6 +40,7 @@ const PlayerControls = () => {
 
   return (
     <div className="player-controls">
+      {/* Left Section - Song Info */}
       <div className="song-info">
         <img
           src={
@@ -54,6 +55,7 @@ const PlayerControls = () => {
         </div>
       </div>
 
+      {/* Center Section - Controls & Progress */}
       <div className="controls-center">
         <div className="controls">
           <FaStepBackward className="icon" onClick={playPrev} />
@@ -76,11 +78,15 @@ const PlayerControls = () => {
             value={progress}
             onChange={(e) => handleSeek(e.target.value)}
             className="progress-bar"
+            style={{
+              background: `linear-gradient(to right, #ff5c8d 0%, #ff5c8d ${progress}%, #4d4d4d ${progress}%, #4d4d4d 100%)`,
+            }}
           />
           <span className="time">{formatTime(duration)}</span>
         </div>
       </div>
 
+      {/* Right Section - Volume */}
       <div className="volume-control">
         <FaVolumeUp className="icon" />
         <input
@@ -90,6 +96,11 @@ const PlayerControls = () => {
           value={volume * 100}
           onChange={(e) => setVolume(e.target.value / 100)}
           className="volume-bar"
+          style={{
+            background: `linear-gradient(to right, #ff5c8d 0%, #ff5c8d ${
+              volume * 100
+            }%, #4d4d4d ${volume * 100}%, #4d4d4d 100%)`,
+          }}
         />
       </div>
     </div>

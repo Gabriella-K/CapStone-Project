@@ -1,6 +1,8 @@
 .popular-list {
     padding: 20px;
     color: white;
+    margin-bottom: 100px;
+    margin-left: 16px;
 }
 
 .popular-list h2 {
@@ -25,7 +27,7 @@
 
 .song-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 10px #ff5c8d;
+    box-shadow: 0 0 10px #ff69b4;
 }
 
 .song-card img {
@@ -48,6 +50,7 @@
     color: #ccc;
     font-size: 0.9rem;
 }
+
 .slider-wrapper {
     position: relative;
     display: flex;

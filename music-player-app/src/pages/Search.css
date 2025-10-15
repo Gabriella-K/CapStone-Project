@@ -1,0 +1,163 @@
+.search-page {
+    color: white;
+    padding: 20px;
+    padding-bottom: 100px;
+    /* Space for now-playing bar */
+}
+
+.genre-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.genre-card {
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.genre-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.genre-card:hover {
+    transform: scale(1.05);
+}
+
+.genre-title {
+    margin-top: 30px;
+    color: #ff5c8d;
+}
+
+.song-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.song-card {
+    width: 150px;
+    background: #1b1b1b;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.song-card:hover {
+    transform: scale(1.05);
+}
+
+.song-image-container {
+    position: relative;
+    width: 100%;
+}
+
+.song-img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 92, 141, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 20px;
+    color: white;
+}
+
+.song-card:hover .play-button {
+    opacity: 1;
+}
+
+.play-button:hover {
+    background: rgba(255, 92, 141, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.song-title {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 8px;
+}
+
+.artist-name {
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+/* Now Playing Bar */
+.now-playing-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1b1b1b;
+    border-top: 2px solid #ff5c8d;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.now-playing-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.now-playing-info {
+    flex: 1;
+}
+
+.now-playing-title {
+    font-size: 0.9rem;
+    color: #fff;
+    margin: 0;
+    font-weight: bold;
+}
+
+.now-playing-artist {
+    font-size: 0.8rem;
+    color: #bbb;
+    margin: 0;
+}
+
+.control-button {
+    background: #ff5c8d;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.control-button:hover {
+    background: #ff3366;
+}
+
+.loading {
+    color: #bbb;
+    text-align: center;
+    width: 100%;
+}

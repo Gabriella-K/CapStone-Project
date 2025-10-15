@@ -1,4 +1,3 @@
-// Sidebar.jsx
 import React from "react";
 import { AiFillHome } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
@@ -6,6 +5,7 @@ import { MdLibraryMusic } from "react-icons/md";
 import { BsShop } from "react-icons/bs";
 import { AiFillHeart } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 function Sidebar() {
@@ -20,39 +20,39 @@ function Sidebar() {
         <div className="nav-section">
           <h3 className="nav-title">Library</h3>
 
-          <a href="#" className="nav-link nav-link-active">
+          <Link to="/" className="nav-link nav-link-active">
             <AiFillHome size={20} />
             <span>Home</span>
-          </a>
+          </Link>
 
-          <a href="#" className="nav-link">
+          <Link to="/search" className="nav-link search-link">
             <BiSearch size={20} />
             <span>Search</span>
-          </a>
+          </Link>
 
-          <a href="#" className="nav-link">
+          <Link to="/library" className="nav-link">
             <MdLibraryMusic size={20} />
             <span>Library</span>
-          </a>
+          </Link>
         </div>
 
         <div className="nav-section">
           <h3 className="nav-title">Discover</h3>
 
-          <a href="#" className="nav-link">
+          <Link to="/store" className="nav-link">
             <BsShop size={20} />
             <span>Store</span>
-          </a>
+          </Link>
 
-          <a href="#" className="nav-link">
+          <Link to="/favorite" className="nav-link">
             <AiFillHeart size={20} />
             <span>Favorite</span>
-          </a>
+          </Link>
 
-          <a href="#" className="nav-link">
+          <Link to="/profile" className="nav-link">
             <FaUser size={20} />
             <span>Profile</span>
-          </a>
+          </Link>
         </div>
       </nav>
     </div>
