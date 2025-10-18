@@ -1,0 +1,288 @@
+.library-page {
+    padding: 30px;
+    color: #fff;
+}
+
+.library-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+/* Tab Navigation */
+.library-tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    overflow-x: auto;
+}
+
+.tab {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: all 0.3s;
+    position: relative;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: #fff;
+}
+
+.tab.active {
+    color: #ff5c8d;
+    font-weight: 600;
+}
+
+.tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #ff5c8d;
+}
+
+/* Library Content */
+.library-content {
+    min-height: 400px;
+}
+
+/* Library Grid */
+.library-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.library-card {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.library-card:hover {
+    background: #222;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(255, 92, 141, 0.2);
+}
+
+/* Card Image */
+.card-image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #2a2a2a;
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Card Overlay */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.library-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.play-btn {
+    background: #ff5c8d;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.play-btn:hover {
+    background: #ff3366;
+    transform: scale(1.1);
+}
+
+/* Playlist Thumbnail */
+.playlist-thumbnail {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    background: #2a2a2a;
+}
+
+.thumbnail-item {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Card Footer */
+.card-footer {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.song-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-footer h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-footer p {
+    font-size: 0.8rem;
+    color: #b3b3b3;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Favorite Button */
+.favorite-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #b3b3b3;
+    transition: all 0.2s;
+    padding: 5px;
+    flex-shrink: 0;
+}
+
+.favorite-btn:hover {
+    color: #ff5c8d;
+    transform: scale(1.2);
+}
+
+.favorite-btn.active {
+    color: #ff5c8d;
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.empty-message {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.empty-subtitle {
+    font-size: 0.95rem;
+    color: #b3b3b3;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .library-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .library-page {
+        padding: 20px;
+    }
+
+    .library-title {
+        font-size: 1.5rem;
+    }
+
+    .library-tabs {
+        gap: 15px;
+    }
+
+    .library-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+    }
+
+    .card-footer {
+        padding: 10px;
+    }
+
+    .card-footer h3 {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .library-page {
+        padding: 15px;
+    }
+
+    .library-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    .tab {
+        font-size: 0.8rem;
+    }
+
+    .empty-icon {
+        font-size: 2.5rem;
+    }
+
+    .empty-message {
+        font-size: 1rem;
+    }
+}

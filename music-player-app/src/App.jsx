@@ -8,35 +8,45 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { PlayerProvider } from "./context/PlayerContext";
 import Search from "./pages/Search";
-
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
+import { AuthProvider } from "./context/AuthContext";
+import Library from "./pages/Library";
 function App() {
   return (
-    <div className="app">
-      <Sidebar />
-      <div className="main-content">
-        <header className="header">
-          <SearchBar />
-        </header>
-        <PlayerProvider>
-          <div className="content">
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <h2 className="section-title">Trending</h2>
-                    <TrendingSlider />
-                    <PopularList />
-                  </>
-                }
-              />
-              <Route path="/search" element={<Search />} />
-            </Routes>
-          </div>
-          <PlayerControls />
-        </PlayerProvider>
+    <AuthProvider>
+      <div className="app">
+        <Sidebar />
+        <div className="main-content">
+          <header className="header">
+            <SearchBar />
+          </header>
+          <PlayerProvider>
+            <div className="content">
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <h2 className="section-title">Trending</h2>
+                      <TrendingSlider />
+                      <PopularList />
+                    </>
+                  }
+                />
+                <Route path="/search" element={<Search />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/Library" element={<Library />} />
+              </Routes>
+            </div>
+            <PlayerControls />
+          </PlayerProvider>
+        </div>
       </div>
-    </div>
+    </AuthProvider>
   );
 }
 
