@@ -1,6 +1,7 @@
 .library-page {
-    padding: 30px;
+    padding: 20px;
     color: #fff;
+    min-height: calc(100vh - 160px);
 }
 
 .library-title {

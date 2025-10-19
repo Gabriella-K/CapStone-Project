@@ -1,13 +1,17 @@
 .app {
   display: flex;
   background-color: #000;
-  min-height: 100vh;
+  height: 100vh;
   color: #fff;
   font-family: Arial, sans-serif;
 }
 
 .main-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
   margin-left: 240px;
   overflow-y: auto;
   padding-top: 80px;
@@ -25,6 +29,9 @@
 
 
 .content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #000;
   padding: 24px;
 }
 

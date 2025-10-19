@@ -1,13 +1,40 @@
-import React from "react";
-import { FaSearch } from "react-icons/fa";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = ({ theme = "dark" }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Navigate to search page with query
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery("");
+    }
+  };
+
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
-    <div className="search-bar">
-      <FaSearch className="search-icon" />
-      <input type="text" placeholder="Search" className="Search-input" />
-    </div>
+    <form className={`search-bar ${theme}`} onSubmit={handleSearch}>
+      <div className="search-input-wrapper">
+        <span className="search-icon">🔍</span>
+        <input
+          type="text"
+          placeholder="Search songs, artists, albums..."
+          value={searchQuery}
+          onChange={handleChange}
+          className="search-input"
+        />
+      </div>
+      <button type="submit" className="search-btn">
+        Search
+      </button>
+    </form>
   );
 };
 

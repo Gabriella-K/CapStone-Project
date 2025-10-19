@@ -1,13 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { usePlayer } from "../context/PlayerContext";
+import { useFavorites } from "../context/FavoriteContext";
 import "./Search.css";
 
 const Search = () => {
   const [genres, setGenres] = useState([]);
   const [songs, setSongs] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
-  const [currentSong, setCurrentSong] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
+  const { currentSong, isPlaying, playSong } = usePlayer();
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   // Fetch genres on mount
   useEffect(() => {
@@ -33,26 +34,17 @@ const Search = () => {
     }
   };
 
-  // Handle play/pause song
+  // Handle play song using PlayerContext
   const handlePlaySong = (song) => {
-    if (currentSong?.id === song.id && isPlaying) {
-      // Pause current song
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      // Play new song or resume
-      setCurrentSong(song);
-      if (audioRef.current) {
-        audioRef.current.src = song.preview;
-        audioRef.current.play();
-        setIsPlaying(true);
-      }
+    if (song && song.preview) {
+      playSong(song, songs);
     }
   };
 
-  // Handle audio end
-  const handleAudioEnd = () => {
-    setIsPlaying(false);
+  // Handle favorite toggle
+  const handleToggleFavorite = (e, song) => {
+    e.stopPropagation();
+    toggleFavorite(song);
   };
 
   return (
@@ -77,26 +69,52 @@ const Search = () => {
           <div className="song-grid">
             {songs.length > 0 ? (
               songs.map((song) => (
-                <div key={song.id} className="song-card">
+                <div
+                  key={song.id}
+                  className="song-card"
+                  onClick={() => handlePlaySong(song)}
+                >
                   <div className="song-image-container">
                     <img
-                      src={song.album.cover_medium}
+                      src={song.album?.cover_medium}
                       alt={song.title}
                       className="song-img"
                     />
+                    <div className="card-overlay">
+                      <button
+                        className="play-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePlaySong(song);
+                        }}
+                      >
+                        {currentSong?.id === song.id && isPlaying ? (
+                          <span>⏸</span>
+                        ) : (
+                          <span>▶</span>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="song-card-footer">
+                    <div className="song-card-info">
+                      <p className="song-title">{song.title}</p>
+                      <p className="artist-name">{song.artist?.name}</p>
+                    </div>
                     <button
-                      className="play-button"
-                      onClick={() => handlePlaySong(song)}
+                      className={`favorite-btn ${
+                        isFavorite(song.id) ? "active" : ""
+                      }`}
+                      onClick={(e) => handleToggleFavorite(e, song)}
+                      title={
+                        isFavorite(song.id)
+                          ? "Remove from favorites"
+                          : "Add to favorites"
+                      }
                     >
-                      {currentSong?.id === song.id && isPlaying ? (
-                        <span>⏸</span>
-                      ) : (
-                        <span>▶</span>
-                      )}
+                      ♥
                     </button>
                   </div>
-                  <p className="song-title">{song.title}</p>
-                  <p className="artist-name">{song.artist.name}</p>
                 </div>
               ))
             ) : (
@@ -104,30 +122,6 @@ const Search = () => {
             )}
           </div>
         </>
-      )}
-
-      {/* Audio player (hidden) */}
-      <audio ref={audioRef} onEnded={handleAudioEnd} />
-
-      {/* Now Playing Bar */}
-      {currentSong && (
-        <div className="now-playing-bar">
-          <img
-            src={currentSong.album.cover_small}
-            alt={currentSong.title}
-            className="now-playing-img"
-          />
-          <div className="now-playing-info">
-            <p className="now-playing-title">{currentSong.title}</p>
-            <p className="now-playing-artist">{currentSong.artist.name}</p>
-          </div>
-          <button
-            className="control-button"
-            onClick={() => handlePlaySong(currentSong)}
-          >
-            {isPlaying ? "⏸ Pause" : "▶ Play"}
-          </button>
-        </div>
       )}
     </div>
   );

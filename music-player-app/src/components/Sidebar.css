@@ -58,28 +58,9 @@
 }
 
 .nav-link:hover {
-    background-color: #151515;
+    background-color: #ec48ec;
     color: #fff;
 }
 
-.nav-link-active {
-    color: #ec4899;
-    background-color: #1a1a1a;
-    border-left: 3px solid #ec4899;
-}
 
-.nav-link-active:hover {
-    color: #ec4899;
-    background-color: #1a1a1a;
-}
 
-.search-link {
-    color: #ff69b4;
-    background-color: #1a1a1a;
-    border-left: 3px solid #ff69b4;
-}
-
-.search-link:hover {
-    color: #ff69b4;
-    background-color: #151515;
-}

@@ -11,10 +11,27 @@
     color: #ff5c8d;
 }
 
-.song-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.slider-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 15px;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    scrollbar-width: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.slider-container::-webkit-scrollbar {
+    display: none;
 }
 
 .song-card {
@@ -22,6 +39,8 @@
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
+    flex: 0 0 140px;
+    min-width: 140px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -44,33 +63,31 @@
     font-weight: bold;
     color: #fff;
     margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .artist {
     color: #ccc;
     font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.slider-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
+.playing-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2rem;
 }
 
-.slider-container,
-.song-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 1rem;
-    padding: 10px 0;
-}
-
-.artist-card,
-.song-card {
-    min-width: 150px;
+.loading-text {
+    color: #bbb;
+    font-size: 1rem;
+    padding: 10px;
     flex: 0 0 auto;
-    text-align: center;
 }
 
 .slide-btn {
@@ -80,16 +97,21 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     padding: 8px;
     border-radius: 50%;
     z-index: 10;
+    transition: background 0.3s ease;
+}
+
+.slide-btn:hover {
+    background: rgba(255, 105, 180, 0.9);
 }
 
 .slide-btn.left {
-    left: -20px;
+    left: 0;
 }
 
 .slide-btn.right {
-    right: -20px;
+    right: 0;
 }

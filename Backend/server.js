@@ -5,7 +5,7 @@ import cors from "cors";
 const app = express();
 const PORT = 5000;
 
-app.use(cors()); 
+app.use(cors());
 
 //API for fetching popular Artists
 app.get("/api/trending", async (req, res) => {
@@ -68,6 +68,16 @@ app.get("/api/artist/:id/top", async (req, res) => {
   }
 });
 
+app.get("/api/recommendations", async (req, res) => {
+  try {
+    const response = await fetch("https://api.deezer.com/chart/0/tracks");
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching Deezer data:", error);
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

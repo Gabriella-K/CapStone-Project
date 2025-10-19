@@ -13,15 +13,15 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import { AuthProvider } from "./context/AuthContext";
 import Library from "./pages/Library";
+import TopBar from "./components/TopBar";
+import Recommendations from "./components/Recommendations";
 function App() {
   return (
     <AuthProvider>
       <div className="app">
         <Sidebar />
         <div className="main-content">
-          <header className="header">
-            <SearchBar />
-          </header>
+          <header className="header"></header>
           <PlayerProvider>
             <div className="content">
               <Routes>
@@ -32,6 +32,7 @@ function App() {
                       <h2 className="section-title">Trending</h2>
                       <TrendingSlider />
                       <PopularList />
+                      <TopBar />
                     </>
                   }
                 />
@@ -45,6 +46,7 @@ function App() {
             <PlayerControls />
           </PlayerProvider>
         </div>
+        <Recommendations />
       </div>
     </AuthProvider>
   );

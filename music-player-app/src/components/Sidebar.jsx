@@ -13,7 +13,7 @@ function Sidebar() {
     <div className="sidebar">
       <div className="logo">
         <MdLibraryMusic size={32} color="#ec4899" />
-        <span className="logo-text">Music App</span>
+        <span className="logo-text">LiVi</span>
       </div>
 
       <nav className="nav">
