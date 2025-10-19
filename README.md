@@ -49,13 +49,13 @@ through a simple and intuitive interface.
 | `/api/genres`         | Fetches all genres                    |
 | `/api/genres/:id`     | Fetches tracks per genre ID           |
 
-## Challenges and Solutions
- # Challenge
+# Challenges and Solutions
+ ## Challenge
 - CORS Policy Error: The Deezer API blocked requests from localhost due to missing headers.
 - Maintaining music playback across pages: When navigating between routes, the audio used to restart or stop.
 - API data inconsistency or missing fields: Some songs or artists lacked image or title data.
 
-# solution
+## Solution
 - Implemented a Node.js + Express proxy server to handle API requests securely and bypass CORS issues.
 - Moved the PlayerControls and PlayerContext outside route-specific components to persist the audio state globally.
 - Added conditional rendering and fallback values to prevent crashes or broken UI displays.
